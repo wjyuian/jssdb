@@ -3,7 +3,11 @@ jssdb
 java connection pool for ssdb
 -------
 
-在spring中继承jssdbClient，代码如下：
+属性文件中配置：
+	MASTER_HOST_PORT_TIME=ip1:port1:timeout1;ip2:port2:timeout2
+	SLAVER_HOST_PORT_TIME=ip3:port3:timeout3;ip4:port4:timeout4
+
+在spring中集成jssdbClient，代码如下：
 
 	<bean id="jssdbPoolConfig" class="com.wj.jssdb.pool.JssdbPoolConfig" >
        	<property name="testOnBorrow" value="true"/> <!-- set for re-connect -->
