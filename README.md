@@ -1,7 +1,9 @@
 jssdb
 =====
-
 java connection pool for ssdb
+-------
+
+在spring中继承jssdbClient，代码如下：
 
 	<bean id="jssdbPoolConfig" class="com.wj.jssdb.pool.JssdbPoolConfig" >
        	<property name="testOnBorrow" value="true"/> <!-- set for re-connect -->
