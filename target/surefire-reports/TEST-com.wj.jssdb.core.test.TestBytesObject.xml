@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="5.13" errors="0" skipped="0" tests="1" name="com.wj.jssdb.core.test.TestBytesObject">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\jdk1.6.0_01\jre\bin"/>
+    <property name="java.vm.version" value="1.6.0_01-b06"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="G:\GitHub\jssdb"/>
+    <property name="java.runtime.version" value="1.6.0_01-b06"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\jdk1.6.0_01\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\ADMINI~1\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows Vista"/>
+    <property name="classworlds.conf" value="C:\MB_work_eclipse\.metadata\.plugins\org.eclipse.m2e.core\launches\m2conf41057.tmp"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="C:\jdk1.6.0_01\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/jdk1.6.0_01/bin/../jre/bin/client;C:/jdk1.6.0_01/bin/../jre/bin;C:/jdk1.6.0_01/bin/../jre/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\jdk1.6.0_01\bin;C:\jdk1.6.0_01\jre\bin;D:\apache-maven-3.1.1\bin\;E:\apache-ant-1.7.1-bin\bin\;D:\eclipse_jdk1.6;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Administrator"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="user.name" value="Administrator"/>
+    <property name="java.class.path" value="/D:/eclipse_jdk1.6/configuration/org.eclipse.osgi/bundles/780/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\jdk1.6.0_01\jre"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.6.0_01"/>
+    <property name="java.ext.dirs" value="C:\jdk1.6.0_01\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\jdk1.6.0_01\jre\lib\resources.jar;C:\jdk1.6.0_01\jre\lib\rt.jar;C:\jdk1.6.0_01\jre\lib\sunrsasign.jar;C:\jdk1.6.0_01\jre\lib\jsse.jar;C:\jdk1.6.0_01\jre\lib\jce.jar;C:\jdk1.6.0_01\jre\lib\charsets.jar;C:\jdk1.6.0_01\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="maven.home" value="G:\GitHub\jssdb\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="5.08" classname="com.wj.jssdb.core.test.TestBytesObject" name="test"/>
+</testsuite>
