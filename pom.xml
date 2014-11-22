@@ -4,7 +4,7 @@
 	<groupId>com.mbgo.search</groupId>
 	<artifactId>Jssdb</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>Jssdb Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
