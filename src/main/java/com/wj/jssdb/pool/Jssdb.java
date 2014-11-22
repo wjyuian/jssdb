@@ -157,4 +157,53 @@ public class Jssdb {
 	public void delete(String key) throws Exception {
 		ssdb.del(key);
 	}
+	
+	public void hSet(String mapperName, String key, String value) {
+		try {
+			ssdb.hset(mapperName, key, value);
+		} catch (Exception e) {
+			
+		}
+	}
+	public String hGet(String mapperName, String key) {
+		try {
+			byte[] temp = ssdb.hget(mapperName, key);
+			if(temp == null) {
+				return null;
+			}
+			return new String(temp);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	public <T extends Serializable> void hSetPojo(String mapperName, String key, T value) {
+		try {
+			ssdb.hset(mapperName, key, SSDBCoderUtil.encode(value));
+		} catch (Exception e) {
+			
+		}
+	}
+	public <T extends Serializable> T hGetPojo(String mapperName, String key) {
+		try {
+			byte[] temp = ssdb.hget(mapperName, key);
+			if(temp == null) {
+				return null;
+			}
+			return SSDBCoderUtil.decode(temp);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	public void hDelete(String mapperName, String keyName) {
+		try {
+			ssdb.hdel(mapperName, keyName);
+		} catch (Exception e) {
+			
+		}
+	}
+	public void hClear(String mapperName) throws Exception {
+		ssdb.hclear(mapperName);
+	}
 }

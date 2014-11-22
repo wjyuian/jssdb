@@ -340,4 +340,94 @@ public class JssdbClient {
 			returnMaster(jssdb);
 		}
 	}
+	
+	public void hSet(String mapperName, String key, String value) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.hSet(mapperName, key, value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	public String hGet(String mapperName, String key) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getSlaver();
+			return jssdb.hGet(mapperName, key);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnSlaver(jssdb);
+		}
+	}
+	public String hGetFromMaster(String mapperName, String key) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			return jssdb.hGet(mapperName, key);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+
+	public <T extends Serializable> void hSetPojo(String mapperName, String key, T value) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.hSetPojo(mapperName, key, value);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	public <T extends Serializable> T hGetPojo(String mapperName, String key) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getSlaver();
+			return jssdb.hGetPojo(mapperName, key);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnSlaver(jssdb);
+		}
+	}
+	public <T extends Serializable> T hGetPojoFromMaster(String mapperName, String key) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			return jssdb.hGetPojo(mapperName, key);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	public void hDelete(String mapperName, String key) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.hDelete(mapperName, key);
+		} catch (Exception e) {
+			
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	public void hClear(String mapperName) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.hClear(mapperName);
+		} catch (Exception e) {
+			
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
 }

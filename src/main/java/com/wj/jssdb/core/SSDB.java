@@ -203,6 +203,13 @@ public class SSDB{
 		}
 		resp.exception();
 	}
+	public void hclear(String name) throws Exception{
+		Response resp = link.request("hclear", name.getBytes());
+		if(resp.ok()){
+			return;
+		}
+		resp.exception();
+	}
 	
 	public void hdel(String name, String key) throws Exception{
 		this.hdel(name, key.getBytes());

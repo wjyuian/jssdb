@@ -82,6 +82,15 @@ public class TestJssdbClient {
 		System.out.println("get from master: " + client.getFromMaster(existsKey));
 		
 		System.out.println();
+		System.out.println("hget from slaver : " + client.hGet("autokey", "second"));
+		System.out.println("hget from master : " + client.hGetFromMaster("autokey", "second"));
+		client.hSet("autokey", "second", "secondValue");
+		System.out.println("hget from slaver : " + client.hGet("autokey", "second"));
+		System.out.println("hget from master : " + client.hGetFromMaster("autokey", "second"));
+		
+		client.hDelete("autokey", "second");
+		System.out.println("hget from master : " + client.hGetFromMaster("autokey", "second"));
+		client.hClear("autokey");
 	}
 	
 	@Test
