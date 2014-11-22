@@ -1,15 +1,14 @@
-jssdb
-=====
-java connection pool for ssdb
--------
-支持多主多从，宕机自动连接下一个可用服务器，服务器恢复后自动进入待连接队列
-#####
+#jssdb
+#####java connection pool for ssdb
 
-属性文件中配置：<br />
+###支持多主多从，宕机自动连接下一个可用服务器，服务器恢复后自动进入待连接队列
+
+
+###属性文件中配置：<br />
 	MASTER_HOST_PORT_TIME=ip1:port1:timeout1;ip2:port2:timeout2
 	SLAVER_HOST_PORT_TIME=ip3:port3:timeout3;ip4:port4:timeout4
 
-在spring中集成jssdbClient，代码如下：
+###在spring中集成jssdbClient，代码如下：
 
 	<bean id="jssdbPoolConfig" class="com.wj.jssdb.pool.JssdbPoolConfig" >
        	<property name="testOnBorrow" value="true"/> <!-- set for re-connect -->
