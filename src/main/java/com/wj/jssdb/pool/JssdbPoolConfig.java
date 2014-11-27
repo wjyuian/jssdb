@@ -14,12 +14,12 @@ import org.apache.commons.pool.impl.GenericObjectPool.Config;
  */
 public class JssdbPoolConfig extends Config {
 	public JssdbPoolConfig() {
-		setTestWhileIdle(true);
-		setMinEvictableIdleTimeMillis(60000);
-		setTimeBetweenEvictionRunsMillis(30000);
-		setNumTestsPerEvictionRun(-1);
+//		setTestWhileIdle(true);
+//		setMinEvictableIdleTimeMillis(60000);
+//		setTimeBetweenEvictionRunsMillis(30000);
+//		setNumTestsPerEvictionRun(-1);
 	}
-
+	
 	public int getMaxIdle() {
 		return maxIdle;
 	}
@@ -113,8 +113,7 @@ public class JssdbPoolConfig extends Config {
 		return softMinEvictableIdleTimeMillis;
 	}
 
-	public void setSoftMinEvictableIdleTimeMillis(
-			long softMinEvictableIdleTimeMillis) {
+	public void setSoftMinEvictableIdleTimeMillis(long softMinEvictableIdleTimeMillis) {
 		this.softMinEvictableIdleTimeMillis = softMinEvictableIdleTimeMillis;
 	}
 }

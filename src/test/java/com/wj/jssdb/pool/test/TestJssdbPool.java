@@ -54,6 +54,10 @@ public class TestJssdbPool {
 		//当调用borrow，pool维护的对象超过maxActive时，通过配置将会出现如下动作
 		System.out.println("WhenExhaustedAction " + config.getWhenExhaustedAction());
 		
+		System.out.println("testOnBorrow " + config.testOnBorrow);
+		System.out.println("testOnReturn " + config.testOnReturn);
+		System.out.println("testOnReturn " + config.testWhileIdle);
+		
 		System.out.println(jssdbPool.isConnected());
 	}
 	@Test
