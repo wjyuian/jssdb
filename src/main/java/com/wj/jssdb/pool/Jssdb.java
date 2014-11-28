@@ -7,7 +7,9 @@ package com.wj.jssdb.pool;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.wj.jssdb.core.Response;
 import com.wj.jssdb.core.SSDB;
@@ -144,17 +146,34 @@ public class Jssdb {
 		}
 	}
 
-	public List<String> mGet(List<String> keys) {
-		List<String> rs = new ArrayList<String>();
+	public Map<String, String> mGet(List<String> keys) {
+		return mGet(keys.toArray(new String[]{}));
+	}
+
+	public Map<String, String> mGet(String[] keys) {
+		Map<String, String> rs = new HashMap<String, String>();
 		try {
-			Response response = ssdb.multi_get(keys.toArray(new String[]{}));
-			for(byte[] value : response.items.values()) {
-				rs.add(new String(value));
+			Response response = ssdb.multi_get(keys);
+			for(Map.Entry<byte[], byte[]> en : response.items.entrySet()) {
+				rs.put(new String(en.getKey()), new String(en.getValue()));
 			}
 			return rs;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	}
+
+	public List<KeyValueBean> mGetAsList(String[] keys) {
+		List<KeyValueBean> rs = new ArrayList<KeyValueBean>();
+		try {
+			Response response = ssdb.multi_get(keys);
+			for(Map.Entry<byte[], byte[]> en : response.items.entrySet()) {
+				rs.add(new KeyValueBean(new String(en.getKey()), new String(en.getValue())));
+			}
+			return rs;
+		} catch (Exception e) {
+			return rs;
 		}
 	}
 	

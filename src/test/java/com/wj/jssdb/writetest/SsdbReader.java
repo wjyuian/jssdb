@@ -7,6 +7,7 @@ package com.wj.jssdb.writetest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.wj.jssdb.pool.JssdbClient;
 
@@ -51,7 +52,7 @@ public class SsdbReader implements Runnable {
 			System.out.println("thread start...");
 			long b = System.currentTimeMillis();
 			try {
-				List<String> rs = jssdbClient.mGetMaster(keys);
+				Map<String, String> rs = jssdbClient.mGetMaster(keys);
 				System.out.println(rs.size());
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -65,7 +65,7 @@ public class PoolableObjectFactoryManager {
 	 * @return
 	 */
 	public PoolableObjectFactory getNext() {
-		if(currentConnectionIndex >= sizeOfHost) {
+		if(currentConnectionIndex >= sizeOfHost - 1) {
 			currentConnectionIndex = 0;
 		}
 		PoolableObjectFactory temp = factorys.get(currentConnectionIndex);

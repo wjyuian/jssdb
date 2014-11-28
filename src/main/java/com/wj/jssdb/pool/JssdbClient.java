@@ -7,6 +7,7 @@ package com.wj.jssdb.pool;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 /**
  * 多主多从，主从读写分离的连接池管理
  * @author 吴健 HQ01U8435
@@ -269,7 +270,7 @@ public class JssdbClient {
 	 * @param keys	指定的批量key值数组
 	 * @return
 	 */
-	public List<String> mGet(List<String> keys) {
+	public Map<String, String> mGet(List<String> keys) {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getSlaver();
@@ -281,11 +282,43 @@ public class JssdbClient {
 		}
 	}
 	/**
+	 * 从[从服务器]批量获取指定key的String
+	 * @param keys	指定的批量key值数组
+	 * @return
+	 */
+	public Map<String, String> mGet(String[] keys) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getSlaver();
+			return jssdb.mGet(keys);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnSlaver(jssdb);
+		}
+	}
+	/**
+	 * 从[从服务器]批量获取指定key的String
+	 * @param keys	指定的批量key值数组
+	 * @return
+	 */
+	public List<KeyValueBean> mGetAsList(String[] keys) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getSlaver();
+			return jssdb.mGetAsList(keys);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnSlaver(jssdb);
+		}
+	}
+	/**
 	 * 从[主服务器]批量获取指定key的String
 	 * @param keys	指定的批量key值数组
 	 * @return
 	 */
-	public List<String> mGetMaster(List<String> keys) {
+	public Map<String, String> mGetMaster(List<String> keys) {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getMaster();
