@@ -15,7 +15,7 @@ import com.wj.jssdb.PropertieUtil;
 public class Protocol {
 
 	public static int DEFAULT_PORT = 8888;
-	public static int DEFAULT_TIMEOUT = 4500;
+	public static int DEFAULT_TIMEOUT = 10000;
 	public static int DEFAULT_DATABASE = 0;
 	
 	public static final String 	MASTER_HOST_PORT_TIME = PropertieUtil.getStrProp("resource", "MASTER_HOST_PORT_TIME");

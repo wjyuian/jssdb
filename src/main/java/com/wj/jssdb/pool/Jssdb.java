@@ -98,7 +98,23 @@ public class Jssdb {
 			return null;
 		}
 	}
-	public <T extends Serializable> void mSet(List<String> keys, List<T> values) throws Exception {
+	public <T extends Serializable> void mSet(List<String> keys, List<String> values) throws Exception {
+		try {
+			if(keys.size() != values.size()) {
+				throw new JssdbException("the size of keys and values is not equal..");
+			}
+			int length = keys.size();
+			byte[][] kvs = new byte[length * 2][];
+			for(int i = 0; i < length ; i ++) {
+				kvs[i * 2] = keys.get(i).getBytes();
+				kvs[i * 2 + 1] = values.get(i).getBytes();
+			}
+			ssdb.multi_set(kvs);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	public <T extends Serializable> void mSetPojo(List<String> keys, List<T> values) throws Exception {
 		try {
 			if(keys.size() != values.size()) {
 				throw new JssdbException("the size of keys and values is not equal..");
@@ -114,7 +130,7 @@ public class Jssdb {
 			throw e;
 		}
 	}
-	public <T extends Serializable> List<T> mGet(List<String> keys) {
+	public <T extends Serializable> List<T> mGetPojo(List<String> keys) {
 		List<T> rs = new ArrayList<T>();
 		try {
 			Response response = ssdb.multi_get(keys.toArray(new String[]{}));
@@ -127,6 +143,21 @@ public class Jssdb {
 			return null;
 		}
 	}
+
+	public List<String> mGet(List<String> keys) {
+		List<String> rs = new ArrayList<String>();
+		try {
+			Response response = ssdb.multi_get(keys.toArray(new String[]{}));
+			for(byte[] value : response.items.values()) {
+				rs.add(new String(value));
+			}
+			return rs;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	public void setNx(String key, String value) {
 		try {
 			ssdb.setnx(key, value);

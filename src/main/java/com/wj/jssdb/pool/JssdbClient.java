@@ -219,11 +219,11 @@ public class JssdbClient {
 	 * @param values	批量的pojo对象；和keys一一对应
 	 * @throws Exception the size of keys and values is not equal..
 	 */
-	public <T extends Serializable> void mSet(List<String> keys, List<T> values) throws Exception {
+	public <T extends Serializable> void mSetPojo(List<String> keys, List<T> values) throws Exception {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getMaster();
-			jssdb.mSet(keys, values);
+			jssdb.mSetPojo(keys, values);
 		} catch (Exception e) {
 			throw e;
 		} finally {
@@ -235,7 +235,41 @@ public class JssdbClient {
 	 * @param keys	指定的批量key值数组
 	 * @return
 	 */
-	public <T extends Serializable> List<T> mGet(List<String> keys) {
+	public <T extends Serializable> List<T> mGetPojo(List<String> keys) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getSlaver();
+			return jssdb.mGetPojo(keys);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnSlaver(jssdb);
+		}
+	}
+
+	/**
+	 * 批量设置key-value的pojo对象信息
+	 * @param keys		批量的key
+	 * @param values	批量的String；和keys一一对应
+	 * @throws Exception the size of keys and values is not equal..
+	 */
+	public <T extends Serializable> void mSet(List<String> keys, List<String> values) throws Exception {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.mSet(keys, values);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	/**
+	 * 从[从服务器]批量获取指定key的String
+	 * @param keys	指定的批量key值数组
+	 * @return
+	 */
+	public List<String> mGet(List<String> keys) {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getSlaver();
@@ -247,6 +281,23 @@ public class JssdbClient {
 		}
 	}
 	/**
+	 * 从[主服务器]批量获取指定key的String
+	 * @param keys	指定的批量key值数组
+	 * @return
+	 */
+	public List<String> mGetMaster(List<String> keys) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			return jssdb.mGet(keys);
+		} catch (Exception e) {
+			return null;
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	
+	/**
 	 * 从[主服务器]批量获取指定key的pojo对象
 	 * @param keys	指定的批量key值数组
 	 * @return
@@ -255,7 +306,7 @@ public class JssdbClient {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getMaster();
-			return jssdb.mGet(keys);
+			return jssdb.mGetPojo(keys);
 		} catch (Exception e) {
 			return null;
 		} finally {

@@ -65,11 +65,11 @@ public class TestJssdbClient {
 		for(User user : us) {
 			keys.add("wjyuian" + user.getAge());
 		}
-		System.out.println("get pojo multi from slaver : " + client.mGet(keys));	//从服务器读数据有延迟
+		System.out.println("get pojo multi from slaver : " + client.mGetPojo(keys));	//从服务器读数据有延迟
 		System.out.println("get pojo multi from master : " + client.mGetFromMaster(keys));
 		System.out.println("set pojo multi");
-		client.mSet(keys, us);
-		System.out.println("get pojo multi from slaver : " + client.mGet(keys));	//从服务器读数据有延迟
+		client.mSetPojo(keys, us);
+		System.out.println("get pojo multi from slaver : " + client.mGetPojo(keys));	//从服务器读数据有延迟
 		System.out.println("get pojo multi from master : " + client.mGetFromMaster(keys));
 		System.out.println();
 		
