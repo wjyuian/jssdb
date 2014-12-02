@@ -47,13 +47,12 @@ public class SsdbReader implements Runnable {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	public void run() {
 		if(jssdbClient != null && keys != null) {
-			System.out.println("thread start...");
 			long b = System.currentTimeMillis();
 			try {
 				Map<String, String> rs = jssdbClient.mGetMaster(keys);
-				System.out.println(rs.size());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

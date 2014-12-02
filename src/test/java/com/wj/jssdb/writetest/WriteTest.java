@@ -22,9 +22,9 @@ public class WriteTest {
 	@Before
 	public void init() {
 		JssdbPoolConfig config = new JssdbPoolConfig();
-//		config.setMaxActive(60);
-//		config.setMinIdle(10);
-//		config.setMaxIdle(30);
+		config.setMaxActive(60);
+		config.setMinIdle(10);
+		config.setMaxIdle(30);
 		jssdbClient = new JssdbClient(new JssdbPool(config, Protocol.MASTER_HOST_PORT_TIME), 
 			new JssdbPool(config, Protocol.SLAVER_HOST_PORT_TIME));
 	}
@@ -42,7 +42,7 @@ public class WriteTest {
 	}
 	@Test
 	public void testWriter() throws InterruptedException {
-		long max = 500000;
+		long max = 1000000;
 		int threadCount = 30;
 		long step = max / threadCount;
 		for(int i = 1; i <= threadCount; i ++) {

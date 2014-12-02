@@ -32,16 +32,16 @@ public class ReadTest {
 	@Before
 	public void init() {
 		JssdbPoolConfig config = new JssdbPoolConfig();
-//		config.setMaxActive(60);
-//		config.setMinIdle(10);
-//		config.setMaxIdle(30);
+		config.setMaxActive(60);
+		config.setMinIdle(10);
+		config.setMaxIdle(30);
 		jssdbClient = new JssdbClient(new JssdbPool(config, Protocol.MASTER_HOST_PORT_TIME), 
 			new JssdbPool(config, Protocol.SLAVER_HOST_PORT_TIME));
 	}
 	@Test
 	public void test() {
-		long max = 800000;
-		int threadCount = 30;
+		long max = 500000;
+		int threadCount = 60;
 		long step = max / threadCount;
 		for(int i = 1; i <= threadCount; i ++) {
 			long from = (i - 1) * step;
