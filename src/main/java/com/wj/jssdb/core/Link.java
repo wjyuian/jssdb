@@ -45,6 +45,15 @@ public class Link {
 		}
 	}
 
+	public Response request(String cmd, String hCmd, byte[]...params) throws Exception{
+		ArrayList<byte[]> list = new ArrayList<byte[]>();
+		list.add(hCmd.getBytes());
+		for(byte[] s : params){
+			list.add(s);
+		}
+		return this.request(cmd, list);
+	}
+	
 	public Response request(String cmd, byte[]...params) throws Exception{
 		ArrayList<byte[]> list = new ArrayList<byte[]>();
 		for(byte[] s : params){

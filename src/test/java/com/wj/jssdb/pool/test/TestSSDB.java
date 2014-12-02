@@ -106,4 +106,15 @@ public class TestSSDB {
 		SSDB.close();
 		System.out.println("close ssdb object");
 	}
+	@Test
+	public void testMulti_hset() throws Exception {
+		byte[][] kvs = new byte[6][];
+		kvs[0] = "1101".getBytes();
+		kvs[1] = "175/60".getBytes();
+		kvs[2] = "1102".getBytes();
+		kvs[3] = "165/82".getBytes();
+		kvs[4] = "1103".getBytes();
+		kvs[5] = "170/81".getBytes();
+		SSDB.multi_hset("testMap", kvs);
+	}
 }

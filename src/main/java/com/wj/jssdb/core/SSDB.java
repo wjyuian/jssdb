@@ -215,6 +215,21 @@ public class SSDB{
 		this.hdel(name, key.getBytes());
 	}
 
+	public Long multi_hset(String mapName, byte[]... kvs) throws Exception{
+		Response resp = link.request("multi_hset", mapName, kvs);
+		if(resp.not_found()){
+			return null;
+		}
+		if(resp.raw.size() != 2){
+			throw new Exception("Invalid response");
+		}
+		if(resp.ok()){
+			return Long.parseLong(new String(resp.raw.get(1)));
+		}
+		resp.exception();
+		return new Long(0);
+	}
+
 	/**
 	 * 
 	 * @param name
@@ -290,7 +305,6 @@ public class SSDB{
 	}
 	
 	/* zset */
-
 	public void zset(String name, byte[] key, long score) throws Exception{
 		Response resp = link.request("zset", name.getBytes(), key, (new Long(score)).toString().getBytes());
 		if(resp.ok()){

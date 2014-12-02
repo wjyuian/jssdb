@@ -254,13 +254,13 @@ public class JssdbClient {
 	 * @param values	批量的String；和keys一一对应
 	 * @throws Exception the size of keys and values is not equal..
 	 */
-	public <T extends Serializable> void mSet(List<String> keys, List<String> values) throws Exception {
+	public <T extends Serializable> void mSet(List<String> keys, List<String> values) {
 		Jssdb jssdb = null;
 		try {
 			jssdb = getMaster();
 			jssdb.mSet(keys, values);
 		} catch (Exception e) {
-			throw e;
+			
 		} finally {
 			returnMaster(jssdb);
 		}
@@ -508,6 +508,17 @@ public class JssdbClient {
 		try {
 			jssdb = getMaster();
 			jssdb.hClear(mapperName);
+		} catch (Exception e) {
+			
+		} finally {
+			returnMaster(jssdb);
+		}
+	}
+	public void mHSet(String mapName, List<String> keys, List<String> values) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			jssdb.multiHSet(mapName, keys, values);
 		} catch (Exception e) {
 			
 		} finally {

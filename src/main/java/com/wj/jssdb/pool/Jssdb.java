@@ -208,6 +208,23 @@ public class Jssdb {
 		ssdb.del(key);
 	}
 	
+	public void multiHSet(String mapName, List<String> keys, List<String> values) {
+		try {
+			if(keys.size() != values.size()) {
+				throw new JssdbException("the size of keys and values is not equal..");
+			}
+			int length = keys.size();
+			byte[][] kvs = new byte[length * 2][];
+			for(int i = 0; i < length ; i ++) {
+				kvs[i * 2] = keys.get(i).getBytes();
+				kvs[i * 2 + 1] = SSDBCoderUtil.encode(values.get(i));
+			}
+			ssdb.multi_hset(mapName, kvs);
+		} catch (Exception e) {
+			
+		}
+	}
+	
 	public void hSet(String mapperName, String key, String value) {
 		try {
 			ssdb.hset(mapperName, key, value);
