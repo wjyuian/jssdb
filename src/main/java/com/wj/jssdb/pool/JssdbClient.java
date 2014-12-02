@@ -6,6 +6,7 @@
 package com.wj.jssdb.pool;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
@@ -524,5 +525,17 @@ public class JssdbClient {
 		} finally {
 			returnMaster(jssdb);
 		}
+	}
+	public Map<String, String> hGetAll(String name) {
+		Jssdb jssdb = null;
+		try {
+			jssdb = getMaster();
+			return jssdb.hGetAll(name);
+		} catch (Exception e) {
+			return new HashMap<String, String>(0);
+		} finally {
+			returnMaster(jssdb);
+		}
+		
 	}
 }

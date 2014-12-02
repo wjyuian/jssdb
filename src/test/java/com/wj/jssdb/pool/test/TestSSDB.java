@@ -31,7 +31,7 @@ public class TestSSDB {
 	public void init() {
 		try {
 			long b = System.currentTimeMillis();
-			SSDB = new SSDB("10.100.20.246", 8889, 3000);
+			SSDB = new SSDB("10.100.20.96", 8889, 3000);
 			System.out.println("init ssdb object : " + (System.currentTimeMillis() - b));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -116,5 +116,10 @@ public class TestSSDB {
 		kvs[4] = "1103".getBytes();
 		kvs[5] = "170/81".getBytes();
 		SSDB.multi_hset("testMap", kvs);
+	}
+	@Test
+	public void testHgetAll() throws Exception {
+		
+		System.out.println(SSDB.hgetall("testMap"));
 	}
 }

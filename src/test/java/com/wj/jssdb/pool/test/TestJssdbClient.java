@@ -7,6 +7,7 @@ package com.wj.jssdb.pool.test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -91,6 +92,25 @@ public class TestJssdbClient {
 		client.hDelete("autokey", "second");
 		System.out.println("hget from master : " + client.hGetFromMaster("autokey", "second"));
 		client.hClear("autokey");
+	}
+	@Test
+	public void testJssdbClientMHset() {
+//		List<String> keys = new ArrayList<String>();
+//		List<String> values = new ArrayList<String>();
+//		for(int i = 0; i < 22; i ++) {
+//			keys.add("key_" + i);
+//			values.add("value_" + i);
+//		}
+//		client.mHSet("keyvalue", keys, values);
+		
+		System.out.println(client.hGet("keyvalue", "key_8"));
+	}
+	@Test
+	public void testHgetAll() {
+		long b = System.currentTimeMillis();
+		Map<String, String> map = client.hGetAll("keyvalue");
+		System.out.println(System.currentTimeMillis() - b);
+		System.out.println(map);
 	}
 	
 	@Test

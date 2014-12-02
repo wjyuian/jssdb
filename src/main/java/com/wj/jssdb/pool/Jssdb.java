@@ -217,11 +217,24 @@ public class Jssdb {
 			byte[][] kvs = new byte[length * 2][];
 			for(int i = 0; i < length ; i ++) {
 				kvs[i * 2] = keys.get(i).getBytes();
-				kvs[i * 2 + 1] = SSDBCoderUtil.encode(values.get(i));
+				kvs[i * 2 + 1] = values.get(i).getBytes();
 			}
 			ssdb.multi_hset(mapName, kvs);
 		} catch (Exception e) {
 			
+		}
+	}
+	public Map<String, String> hGetAll(String mapName) {
+		Map<String, String> rs = new HashMap<String, String>();
+		try {
+			Response response = ssdb.hgetall(mapName);
+			for(Map.Entry<byte[], byte[]> en : response.items.entrySet()) {
+				rs.put(new String(en.getKey()), new String(en.getValue()));
+			}
+			return rs;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 	

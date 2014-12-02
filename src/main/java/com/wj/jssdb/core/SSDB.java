@@ -230,6 +230,15 @@ public class SSDB{
 		return new Long(0);
 	}
 
+	public Response hgetall(String name) throws Exception{
+		Response resp = link.request("hgetall", name.getBytes());
+		if(!resp.ok()) {
+			resp.exception();
+		}
+		resp.buildMap();
+		return resp;
+	}
+	
 	/**
 	 * 
 	 * @param name
