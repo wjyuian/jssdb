@@ -24,8 +24,6 @@ public class PoolableObjectFactoryManager {
 	private List<PoolableObjectFactory> factorys = new ArrayList<PoolableObjectFactory>();
 	//当前链接索引位置
 	private static int currentConnectionIndex = 0;
-	//服务器数量
-	private static int sizeOfHost = 0;
 	
 	/**
 	 * 构造函数
@@ -54,7 +52,6 @@ public class PoolableObjectFactoryManager {
 					//创建的服务器连接信息加入到列表
 					factorys.add(factory);
 					filter.add(host + "_" + port);
-					sizeOfHost ++;
 				} catch (Exception e) {}
 			}
 		}
@@ -64,8 +61,8 @@ public class PoolableObjectFactoryManager {
 	 * 采用轮询方式
 	 * @return
 	 */
-	public PoolableObjectFactory getNext() {
-		if(currentConnectionIndex >= sizeOfHost - 1) {
+	public synchronized PoolableObjectFactory getNext() {
+		if(currentConnectionIndex > factorys.size() - 1) {
 			currentConnectionIndex = 0;
 		}
 		PoolableObjectFactory temp = factorys.get(currentConnectionIndex);

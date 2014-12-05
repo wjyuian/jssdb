@@ -102,8 +102,12 @@ public class TestJssdbClient {
 //			values.add("value_" + i);
 //		}
 //		client.mHSet("keyvalue", keys, values);
-		
-		System.out.println(client.hGet("keyvalue", "key_8"));
+		long b = System.currentTimeMillis();
+		System.out.println(client.hGetAll("keyvalue"));
+		System.out.println(System.currentTimeMillis() - b);
+		b = System.currentTimeMillis();
+		System.out.println(client.hGetAll("keyvalue"));
+		System.out.println(System.currentTimeMillis() - b);
 	}
 	@Test
 	public void testHgetAll() {
